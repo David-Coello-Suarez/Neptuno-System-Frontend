@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom'
 import { useAppSelector } from '../../hooks'
-import { AppNavbar } from '../ui'
+import { AppNavbar, AppSidebar } from '../ui'
 
 const Private = () => {
   const { loggin_tokses } = useAppSelector((state) => state.loggin.loggedIn)
@@ -11,9 +11,12 @@ const Private = () => {
 
   return (
     <>
-      <AppNavbar />
+      <div className="main-wrapper">
+        <AppSidebar />
 
-      <h1>HOME</h1>
+        <AppNavbar />
+        <h1>HOME</h1>
+      </div>
     </>
   )
 }
