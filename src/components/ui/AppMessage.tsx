@@ -4,7 +4,7 @@ const AppMessage = () => {
   return (
     <>
       <a
-        href="javascript:void(0);"
+        // href="javascript:void(0);"
         id="open_msg_box"
         className="hasnotifications nav-link">
         <span className="material-symbols-outlined">chat</span>{' '}

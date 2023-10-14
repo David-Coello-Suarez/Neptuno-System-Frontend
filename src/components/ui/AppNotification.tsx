@@ -4,7 +4,7 @@ const AppNotification = () => {
   return (
     <>
       <a
-        href="javascript:void(0);"
+        // href="javascript:void(0);"
         className="dropdown-toggle nav-link"
         data-bs-toggle="dropdown">
         <span className="material-symbols-outlined">notifications_active</span>{' '}

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const NotFound = () => {
   return (
-    <div className="main-wrapper error-wrapper" style={{ height: '100vh !important;' }}>
+    <div className="main-wrapper error-wrapper" style={{ height: '100vh ' }}>
       <div className="error-box">
         <h1>404</h1>
         <h3>

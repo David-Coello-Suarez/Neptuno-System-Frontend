@@ -4,7 +4,7 @@ const AppUser = () => {
   return (
     <>
       <a
-        href="javascript:void(0);"
+        // href="javascript:void(0);"
         className="dropdown-toggle nav-link user-link"
         data-bs-toggle="dropdown">
         <span className="user-img">
