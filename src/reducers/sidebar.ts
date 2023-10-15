@@ -6,11 +6,23 @@ const initialState = {
       sideba_sideba: 1,
       sideba_nombre: 'Pacientes',
       sideba_ventan: 'patients',
-      sideba_sidico: {
-        icon_font: 'material-symbols-outlined',
-        icon_name: 'patient_list',
-      },
+      sideba_sidico: 'patient_list',
       sideba_submen: [],
+    },
+    {
+      sideba_sideba: 2,
+      sideba_nombre: 'Localización',
+      sideba_ventan: '',
+      sideba_sidico: 'public',
+      sideba_submen: [
+        {
+          sideba_sideba: 3,
+          sideba_nombre: 'Pais',
+          sideba_ventan: 'pais',
+          sideba_sidico: 'location_on',
+          sideba_submen: [],
+        },
+      ],
     },
   ],
 }

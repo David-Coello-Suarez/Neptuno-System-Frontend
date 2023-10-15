@@ -154,7 +154,7 @@ textarea.form-control {
   float: left;
 }
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .display-block {
   display: block;
@@ -7304,6 +7304,6 @@ table.dataTable thead > tr > td.sorting {
   padding: 20px;
 }
 
-.material-symbols-outlined {
+#icon {
   line-height: 2.2;
 }

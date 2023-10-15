@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import SimpleBar from 'simplebar-react'
 import 'simplebar-react/dist/simplebar.min.css'
 import { useAppSelector } from '../../hooks'
@@ -9,15 +9,14 @@ interface isideba {
   sideba_sideba: number
   sideba_nombre: string
   sideba_ventan: string
-  sideba_sidico: {
-    icon_font: string
-    icon_name: string
-  }
+  sideba_sidico: string
   sideba_submen: isideba[]
 }
 
 const AppSidebar = () => {
   const { sideba } = useAppSelector((state) => state.sideba)
+
+  const path = useLocation().pathname
 
   return (
     <div className="sidebar" id="sidebar">
@@ -25,8 +24,8 @@ const AppSidebar = () => {
         <SimpleBar className="sidebar-menu">
           <div id="sidebar-menu" className="sidebar-menu">
             <ul>
-              <li className="menu-title py-2">Main</li>
-              <li>
+              <li className="menu-title py-2">Principal</li>
+              <li className={`${path === '/dash' && 'active'}`}>
                 <Link to={'.'} className="py-2">
                   <span
                     className="material-symbols-outlined"
@@ -38,7 +37,7 @@ const AppSidebar = () => {
               </li>
               {sideba.map((sd) =>
                 sd.sideba_submen.length === 0 ? (
-                  <Pagina key={sd.sideba_sideba} {...sd} />
+                  <Pagina key={sd.sideba_sideba} propsp={sd} />
                 ) : (
                   <Submenu key={sd.sideba_sideba} {...sd} />
                 ),
@@ -56,7 +55,7 @@ export default AppSidebar
 const Submenu = (props: isideba) => {
   const [open, setOpen] = useState(true)
 
-  if (props.sideba_submen.length == 0) return <Pagina {...props} />
+  if (props.sideba_submen.length == 0) return <Pagina propsp={props} addClass />
 
   const handleCollapse = () => setOpen(!open)
 
@@ -68,7 +67,7 @@ const Submenu = (props: isideba) => {
         aria-expanded={open}
         aria-controls="example-collapse-text">
         <div>
-          <i className={props.sideba_sidico.icon_font}>{props.sideba_sidico.icon_name}</i>{' '}
+          <i className="material-symbols-outlined">{props.sideba_sidico}</i>{' '}
           <span> {props.sideba_nombre} </span>{' '}
         </div>
         <span
@@ -91,16 +90,28 @@ const Submenu = (props: isideba) => {
   )
 }
 
-const Pagina = (props: isideba) => {
+interface ipagina {
+  propsp: isideba
+  addClass?: boolean
+}
+const Pagina = ({ propsp, addClass }: ipagina) => {
+  const path = useLocation().pathname
+
+  const pathString = path.split('/').filter(Boolean)
+
   return (
-    <li style={{ cursor: 'pointer' }}>
-      <Link to={props.sideba_ventan} className="py-2">
+    <li
+      style={{ cursor: 'pointer' }}
+      className={`${pathString[1] === propsp.sideba_ventan && 'active'}`}>
+      <Link
+        to={propsp.sideba_ventan}
+        className={`${addClass && 'align-items-center d-inline-flex w-100'} py-2`}>
         <span
-          className={props.sideba_sidico.icon_font}
+          className="material-symbols-outlined"
           style={{ lineHeight: '1', marginLeft: 0 }}>
-          {props.sideba_sidico.icon_name}
+          {propsp.sideba_sidico}
         </span>
-        <span>{props.sideba_nombre}</span>
+        <span className={`${addClass && 'ms-2'}`}>{propsp.sideba_nombre}</span>
       </Link>
     </li>
   )

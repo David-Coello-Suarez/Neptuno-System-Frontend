@@ -7,8 +7,10 @@ const AppMessage = () => {
         // href="javascript:void(0);"
         id="open_msg_box"
         className="hasnotifications nav-link">
-        <span className="material-symbols-outlined">chat</span>{' '}
-        <span className="badge badge-pill bg-danger float-end">8</span>
+        <span className="material-symbols-outlined" id="icon">
+          chat
+        </span>{' '}
+        <span className="badge badge-pill bg-danger float-end">0</span>
       </a>
 
       <div className="notification-box">

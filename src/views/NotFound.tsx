@@ -1,6 +1,10 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const NotFound = () => {
+  const navigate = useNavigate()
+
+  const handleBack = () => navigate('/')
+
   return (
     <div className="main-wrapper error-wrapper" style={{ height: '100vh ' }}>
       <div className="error-box">
@@ -9,9 +13,9 @@ const NotFound = () => {
           <i className="fa fa-warning"></i> ¡Ups! ¡Página no encontrada!
         </h3>
         <p>La página que usted solicitó no fue encontrada.</p>
-        <Link to="/" className="btn btn-primary go-home">
+        <button type="button" className="btn btn-primary go-home" onClick={handleBack}>
           Ir a casa
-        </Link>
+        </button>
       </div>
     </div>
   )

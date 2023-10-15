@@ -7,8 +7,10 @@ const AppNotification = () => {
         // href="javascript:void(0);"
         className="dropdown-toggle nav-link"
         data-bs-toggle="dropdown">
-        <span className="material-symbols-outlined">notifications_active</span>{' '}
-        <span className="badge badge-pill bg-danger float-end">3</span>
+        <span className="material-symbols-outlined" id="icon">
+          notifications_active
+        </span>
+        <span className="badge badge-pill bg-danger float-end">0</span>
       </a>
       <div className="dropdown-menu notifications">
         <div className="topnav-dropdown-header">

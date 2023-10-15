@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import { useAppSelector } from '../../hooks'
 import { AppNavbar, AppSidebar } from '../ui'
 
@@ -15,7 +15,11 @@ const Private = () => {
         <AppSidebar />
 
         <AppNavbar />
-        <h1>HOME</h1>
+        <div className="page-wrapper">
+          <div className="content p-3">
+            <Outlet />
+          </div>
+        </div>
       </div>
     </>
   )

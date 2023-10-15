@@ -10,11 +10,11 @@ const AppUser = () => {
         <span className="user-img">
           <img
             className="rounded-circle me-1"
-            src="../assets/img/user.jpg"
+            src="/assets/img/user.jpg"
             width="40"
             alt="Admin"
           />
-          <span className="status online me-1"></span>
+          <span className="status me-1"></span>
         </span>
         <span>Admin</span>
       </a>
