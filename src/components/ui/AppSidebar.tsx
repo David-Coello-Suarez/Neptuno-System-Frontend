@@ -25,7 +25,7 @@ const AppSidebar = () => {
           <div id="sidebar-menu" className="sidebar-menu">
             <ul>
               <li className="menu-title py-2">Principal</li>
-              <li className={`${path === '/dash' && 'active'}`}>
+              <li className={`${path === '/dash' ? 'active' : ''}`}>
                 <Link to={'.'} className="py-2">
                   <span
                     className="material-symbols-outlined"
@@ -102,16 +102,16 @@ const Pagina = ({ propsp, addClass }: ipagina) => {
   return (
     <li
       style={{ cursor: 'pointer' }}
-      className={`${pathString[1] === propsp.sideba_ventan && 'active'}`}>
+      className={`${pathString[1] === propsp.sideba_ventan ? 'active' : ''}`}>
       <Link
         to={propsp.sideba_ventan}
-        className={`${addClass && 'align-items-center d-inline-flex w-100'} py-2`}>
+        className={`${addClass ? 'align-items-center d-inline-flex w-100' : ''} py-2`}>
         <span
           className="material-symbols-outlined"
           style={{ lineHeight: '1', marginLeft: 0 }}>
           {propsp.sideba_sidico}
         </span>
-        <span className={`${addClass && 'ms-2'}`}>{propsp.sideba_nombre}</span>
+        <span className={`${addClass ? 'ms-2' : ''}`}>{propsp.sideba_nombre}</span>
       </Link>
     </li>
   )
