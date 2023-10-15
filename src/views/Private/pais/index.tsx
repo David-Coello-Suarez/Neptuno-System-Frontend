@@ -1,6 +1,10 @@
 import { RouteObject } from 'react-router-dom'
-import Pais from './Pais'
+import Country from './Pais'
+import FormCountry from './FormCountry'
 
-const PaisRouter: RouteObject[] = [{ index: true, element: <Pais /> }]
+const CountryRouter: RouteObject[] = [
+  { index: true, element: <Country /> },
+  { path: 'add', element: <FormCountry /> },
+]
 
-export default PaisRouter
+export default CountryRouter

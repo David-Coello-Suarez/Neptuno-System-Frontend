@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
+import { City, Country, Province } from '../../../components/views'
 
 const FormPatient = () => {
   const navigate = useNavigate()
@@ -39,6 +40,7 @@ const FormPatient = () => {
                     </button>
                     <button
                       disabled
+                      style={{ cursor: 'not-allowed' }}
                       type="button"
                       className="align-items-center btn btn-danger btn-sm d-inline-flex ms-1">
                       <span className="material-symbols-outlined">delete</span>
@@ -131,7 +133,25 @@ const FormPatient = () => {
                   />
                 </div>
               </div>
+            </div>
 
+            <div className="row mb-3">
+              <div className="col-sm-12">
+                <div className="row">
+                  <div className="col-md-4">
+                    <Country />
+                  </div>
+                  <div className="col-md-4">
+                    <Province />
+                  </div>
+                  <div className="col-md-4">
+                    <City />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
               <div className="col-sm-6">
                 <div className="form-group">
                   <label>

@@ -7307,3 +7307,11 @@ table.dataTable thead > tr > td.sorting {
 #icon {
   line-height: 2.2;
 }
+
+.form-control:disabled {
+  cursor: not-allowed;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}

@@ -9,7 +9,7 @@ const columns = [
   { title: 'Estado' },
 ]
 
-const Pais = () => {
+const Country = () => {
   const navigate = useNavigate()
 
   const handleClickAdd = () => navigate('add')
@@ -23,7 +23,7 @@ const Pais = () => {
             onClick={handleClickAdd}
             className="align-items-center btn btn-primary btn-rounded btn-sm d-inline-flex">
             <i className="material-symbols-outlined">person_add</i>
-            <strong className="d-md-inline-block d-none ms-2">Añadir Nuevo Pais</strong>
+            <strong className="d-md-inline-block d-none ms-2">Añadir Nuevo País</strong>
           </button>
         </div>
       </div>
@@ -36,7 +36,7 @@ const Pais = () => {
             bordered
             // locale={'Sin datos para mostrar'}
             locale={{
-              emptyText: <NotData onclick={handleClickAdd} btnMssg="Añadir Nuevo Pais" />,
+              emptyText: <NotData onclick={handleClickAdd} btnMssg="Añadir Nuevo País" />,
             }}
           />
         </div>
@@ -45,4 +45,4 @@ const Pais = () => {
   )
 }
 
-export default Pais
+export default Country
