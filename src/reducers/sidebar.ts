@@ -38,6 +38,20 @@ const initialState = {
         },
       ],
     },
+    {
+      sideba_sideba: 6,
+      sideba_nombre: 'Rol',
+      sideba_ventan: 'roles',
+      sideba_sidico: 'supervisor_account',
+      sideba_submen: [],
+    },
+    {
+      sideba_sideba: 7,
+      sideba_nombre: 'Ajustes',
+      sideba_ventan: 'patients',
+      sideba_sidico: 'manage_accounts',
+      sideba_submen: [],
+    },
   ],
 }
 
