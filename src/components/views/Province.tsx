@@ -13,7 +13,7 @@ const Country = () => {
   return (
     <>
       <Form.Group controlId="validationCustom02">
-        <Form.Label>País</Form.Label>
+        <Form.Label>Provincia</Form.Label>
         <SelectBox
           options={categories}
           name={'select1'}

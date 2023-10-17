@@ -53,7 +53,7 @@ const AppSidebar = () => {
 export default AppSidebar
 
 const Submenu = (props: isideba) => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   if (props.sideba_submen.length == 0) return <Pagina propsp={props} addClass />
 

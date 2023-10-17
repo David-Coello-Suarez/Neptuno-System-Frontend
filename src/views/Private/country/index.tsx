@@ -1,5 +1,5 @@
 import { RouteObject } from 'react-router-dom'
-import Country from './Pais'
+import Country from './Country'
 import FormCountry from './FormCountry'
 
 const CountryRouter: RouteObject[] = [

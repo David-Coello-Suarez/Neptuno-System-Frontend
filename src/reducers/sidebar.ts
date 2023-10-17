@@ -18,7 +18,21 @@ const initialState = {
         {
           sideba_sideba: 3,
           sideba_nombre: 'Pais',
-          sideba_ventan: 'pais',
+          sideba_ventan: 'country',
+          sideba_sidico: 'location_on',
+          sideba_submen: [],
+        },
+        {
+          sideba_sideba: 4,
+          sideba_nombre: 'Provincia',
+          sideba_ventan: 'province',
+          sideba_sidico: 'location_on',
+          sideba_submen: [],
+        },
+        {
+          sideba_sideba: 5,
+          sideba_nombre: 'Ciudad',
+          sideba_ventan: 'city',
           sideba_sidico: 'location_on',
           sideba_submen: [],
         },
