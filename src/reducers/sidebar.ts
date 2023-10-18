@@ -51,6 +51,13 @@ const initialState = {
           sideba_sidico: 'supervisor_account',
           sideba_submen: [],
         },
+        {
+          sideba_sideba: 7,
+          sideba_nombre: 'Ajustes de e-mail',
+          sideba_ventan: 'emailSetting',
+          sideba_sidico: 'inbox_customize',
+          sideba_submen: [],
+        },
       ],
     },
   ],

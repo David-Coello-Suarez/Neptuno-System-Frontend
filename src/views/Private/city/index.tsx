@@ -1,6 +1,8 @@
+import { lazy } from 'react'
 import { RouteObject } from 'react-router-dom'
-import FormCity from './FormCity'
-import City from './City'
+
+const FormCity = lazy(() => import('./FormCity'))
+const City = lazy(() => import('./City'))
 
 const CityRouter: RouteObject[] = [
   { index: true, element: <City /> },

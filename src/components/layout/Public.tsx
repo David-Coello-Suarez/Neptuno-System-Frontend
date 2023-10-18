@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+import { memo } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { useAppSelector } from '../../hooks'
 
@@ -11,4 +13,4 @@ const Public = () => {
   return <Outlet />
 }
 
-export default Public
+export default memo(Public)

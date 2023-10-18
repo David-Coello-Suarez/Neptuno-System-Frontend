@@ -2934,6 +2934,7 @@ a.fc-event:not([href]) {
 .roles-menu > ul > li {
   display: block;
   position: relative;
+  cursor: pointer;
 }
 .roles-menu > ul > li > a {
   border-left: 3px solid transparent;
@@ -2965,7 +2966,7 @@ a.fc-event:not([href]) {
   border-radius: 8px;
   content: '';
   height: 16px;
-  margin-top: -8px;
+  margin-top: -10px;
   position: absolute;
   opacity: 0.3;
   transition: all 0.4s ease-in-out;
@@ -2980,7 +2981,7 @@ a.fc-event:not([href]) {
   left: -4px;
   margin-top: -8px;
   position: absolute;
-  top: -4px;
+  top: -6px;
   transition: all 0.3s ease-in-out;
   width: 24px;
 }

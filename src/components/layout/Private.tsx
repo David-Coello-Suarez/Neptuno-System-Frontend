@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+import { memo } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { useAppSelector } from '../../hooks'
 import { AppNavbar, AppSidebar } from '../ui'
@@ -25,4 +27,4 @@ const Private = () => {
   )
 }
 
-export default Private
+export default memo(Private)

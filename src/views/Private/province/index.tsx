@@ -1,6 +1,8 @@
+import { lazy } from 'react'
 import { RouteObject } from 'react-router-dom'
-import Province from './Province'
-import FormProvince from './FormProvince'
+
+const Province = lazy(() => import('./Province'))
+const FormProvince = lazy(() => import('./FormProvince'))
 
 const ProvinceRouter: RouteObject[] = [
   { index: true, element: <Province /> },

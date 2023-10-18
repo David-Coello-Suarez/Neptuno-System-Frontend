@@ -1,6 +1,8 @@
-import NotData from './NotData'
-import Country from './Country'
-import City from './City';
-import Province from './Province';
+import { lazy } from 'react'
+
+const NotData = lazy(() => import('./NotData'))
+const Country = lazy(() => import('./Country'))
+const City = lazy(() => import('./City'))
+const Province = lazy(() => import('./Province'))
 
 export { NotData, Country, Province, City }
