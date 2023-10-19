@@ -1,7 +1,9 @@
+import { lazy } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Table } from 'antd'
 import { AddButton } from '../../../components/ui'
 import { NotData } from '../../../components/views'
+const CollaboratingFilters = lazy(() => import('./CollaboratingFilters'))
 
 const columns = [
   { title: 'Apellidos Nombres' },
@@ -20,6 +22,8 @@ const Collaborators = () => {
   return (
     <>
       <AddButton handleClickAdd={handleClickAdd} msgButton="Añadir Nuevo Colaborador" />
+
+      <CollaboratingFilters />
 
       <div className="row">
         <div className="col-md-12">

@@ -17,6 +17,13 @@ const initialState = {
       sideba_submen: [],
     },
     {
+      sideba_sideba: 9,
+      sideba_nombre: 'Sucursales',
+      sideba_ventan: 'branchOffices',
+      sideba_sidico: 'apartment',
+      sideba_submen: [],
+    },
+    {
       sideba_sideba: 2,
       sideba_nombre: 'Localización',
       sideba_ventan: '',
