@@ -1,24 +1,25 @@
-import { Table } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { NotData } from '../../../components/views'
+import { Table } from 'antd'
 import { AddButton } from '../../../components/ui'
+import { NotData } from '../../../components/views'
 
 const columns = [
   { title: 'Apellidos Nombres' },
-  { title: 'Edad' },
-  { title: 'Fec. Nac.' },
-  { title: 'N°. Contacto' },
-  { title: 'Correo Electrónico' },
+  { title: 'Cédula' },
+  { title: 'Correo electrónico' },
+  { title: 'Móvil' },
+  { title: 'Fecha Ingreso' },
+  { title: 'Cargo' },
 ]
 
-const Patients = () => {
+const Collaborators = () => {
   const navigate = useNavigate()
 
   const handleClickAdd = () => navigate('add')
 
   return (
     <>
-      <AddButton handleClickAdd={handleClickAdd} msgButton="Añadir Nuevo Paciente" />
+      <AddButton handleClickAdd={handleClickAdd} msgButton="Añadir Nuevo Colaborador" />
 
       <div className="row">
         <div className="col-md-12">
@@ -29,7 +30,7 @@ const Patients = () => {
             // locale={'Sin datos para mostrar'}
             locale={{
               emptyText: (
-                <NotData onclick={handleClickAdd} btnMssg="Añadir Nuevo Paciente" />
+                <NotData onclick={handleClickAdd} btnMssg="Añadir Nuevo Colaborador" />
               ),
             }}
           />
@@ -39,4 +40,4 @@ const Patients = () => {
   )
 }
 
-export default Patients
+export default Collaborators

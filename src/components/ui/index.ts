@@ -5,5 +5,6 @@ const AppUser = lazy(() => import('./AppUser'))
 const AppNotification = lazy(() => import('./AppNotification'))
 const AppMessage = lazy(() => import('./AppMessage'))
 const AppSidebar = lazy(() => import('./AppSidebar'))
+const AddButton = lazy(() => import('./AddButton'))
 
-export { AppNavbar, AppUser, AppNotification, AppMessage, AppSidebar }
+export { AppNavbar, AppUser, AppNotification, AppMessage, AppSidebar, AddButton }

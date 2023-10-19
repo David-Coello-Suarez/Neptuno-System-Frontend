@@ -5,6 +5,7 @@ import ProvinceRouter from './province'
 import CityRouter from './city'
 import RolePermissionsRouter from './rolesPermissions'
 import EmailSettingRouter from './emailSetting'
+import CollaboratorsRouter from './collaborators'
 
 const PrivateRouter: RouteObject[] = [
   { path: 'city', children: CityRouter },
@@ -12,6 +13,7 @@ const PrivateRouter: RouteObject[] = [
   { path: 'patients', children: PatientRouter },
   { path: 'province', children: ProvinceRouter },
   { path: 'emailSetting', children: EmailSettingRouter },
+  { path: 'collaborators', children: CollaboratorsRouter },
   { path: 'rolesPermissions', children: RolePermissionsRouter },
 ]
 

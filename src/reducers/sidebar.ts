@@ -6,7 +6,14 @@ const initialState = {
       sideba_sideba: 1,
       sideba_nombre: 'Pacientes',
       sideba_ventan: 'patients',
-      sideba_sidico: 'patient_list',
+      sideba_sidico: 'person',
+      sideba_submen: [],
+    },
+    {
+      sideba_sideba: 8,
+      sideba_nombre: 'Colaboradores',
+      sideba_ventan: 'collaborators',
+      sideba_sidico: 'person',
       sideba_submen: [],
     },
     {
@@ -48,7 +55,7 @@ const initialState = {
           sideba_sideba: 6,
           sideba_nombre: 'Roles y permisos',
           sideba_ventan: 'rolesPermissions',
-          sideba_sidico: 'supervisor_account',
+          sideba_sidico: 'manage_accounts',
           sideba_submen: [],
         },
         {
