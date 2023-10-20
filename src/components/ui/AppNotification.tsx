@@ -18,29 +18,12 @@ const AppNotification = () => {
         </div>
         <div className="drop-scroll">
           <ul className="notification-list">
-            <li className="notification-message">
-              <Link to="/activities">
-                <div className="media">
-                  <span className="avatar">
-                    <img
-                      alt="John Doe"
-                      src="/assets/img/user.jpg"
-                      className="img-fluid rounded-circle"
-                    />
-                  </span>
-                  <div className="media-body">
-                    <p className="noti-details">
-                      <span className="noti-title">John Doe</span> added new task{' '}
-                      <span className="noti-title">Patient appointment booking</span>
-                    </p>
-                    <p className="noti-time">
-                      <span className="notification-time">4 mins ago</span>
-                    </p>
-                  </div>
-                </div>
-              </Link>
+            <li className="notification-message py-2 text-center">
+              <strong>
+                <h6>Sin notificaciones</h6>
+              </strong>
             </li>
-            <li className="notification-message">
+            {/* <li className="notification-message">
               <Link to="/activities">
                 <div className="media">
                   <span className="avatar">V</span>
@@ -110,7 +93,7 @@ const AppNotification = () => {
                   </div>
                 </div>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="topnav-dropdown-footer">

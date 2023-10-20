@@ -2835,7 +2835,9 @@ a.fc-event:not([href]) {
   width: 400px;
 }
 .msg-list-scroll {
-  height: 625px !important;
+  /* height: 625px !important; */
+  height: 80vh !important;
+  min-height: '100vh';
 }
 .notifications.msg-noti .drop-scroll {
   width: 310px;

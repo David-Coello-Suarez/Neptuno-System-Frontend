@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom'
 import { AppMessage, AppNotification, AppUser } from '.'
+import { useAppDispatch } from '../../hooks'
+import { setSidebar } from '../../reducers/app'
 
 const AppNavbar = () => {
+  const dispatch = useAppDispatch()
+
+  const handleSetSidebar = () => dispatch(setSidebar())
+
   return (
     <div className="header">
       <div className="header-left">
@@ -9,10 +15,14 @@ const AppNavbar = () => {
           <img src="/assets/img/logo.png" width="35" height="35" /> <span>Preclinic</span>
         </Link>
       </div>
-      <a id="toggle_btn">
+      <a id="toggle_btn" className="d-none">
         <span className="material-symbols-outlined">menu</span>
       </a>
-      <a id="mobile_btn" className="mobile_btn float-start" href="#sidebar">
+      <a
+        style={{ cursor: 'pointer' }}
+        id="mobile_btn"
+        className="mobile_btn float-start"
+        onClick={handleSetSidebar}>
         <span className="material-symbols-outlined">menu</span>
       </a>
 
