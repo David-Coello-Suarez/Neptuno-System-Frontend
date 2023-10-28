@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import { AppMessage, AppNotification, AppUser } from '.'
-import { useAppDispatch } from '../../hooks'
-import { setSidebar } from '../../reducers/app'
+import { AppUser } from '..'
+import { useAppDispatch } from '../../../hooks'
+import { setSidebar } from '../../../reducers/app'
 
 const AppNavbar = () => {
   const dispatch = useAppDispatch()
@@ -27,13 +27,13 @@ const AppNavbar = () => {
       </a>
 
       <ul className="nav user-menu float-end">
-        <li className="nav-item dropdown">
+        {/* <li className="nav-item dropdown">
           <AppNotification />
         </li>
 
         <li className="nav-item dropdown">
           <AppMessage />
-        </li>
+        </li>*/}
 
         <li className="nav-item dropdown has-arrow">
           <AppUser />

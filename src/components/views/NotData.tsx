@@ -11,11 +11,9 @@ const NotData = (props: inotdata) => {
       image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
       imageStyle={{ height: 60 }}
       description={<span>No hay datos para mostrar</span>}>
-      <button
-        onClick={props.onclick}
-        className="align-items-center btn btn-primary btn-rounded btn-sm d-inline-flex">
-        <i className="material-symbols-outlined">person_add</i>
-        <strong className="ms-2">{props.btnMssg}</strong>
+      <button onClick={props.onclick} className="btn btn-primary btn-rounded">
+        <i className="fa fa-plus"></i>
+        <strong className="m-l-5">{props.btnMssg}</strong>
       </button>
     </Empty>
   )

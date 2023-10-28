@@ -1,56 +1,78 @@
-import { Col, Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import { InputControl } from '../../../components/ui'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
+import { useFormik } from 'formik'
+import { icountr } from '../../../interfaces'
+import { post_countr, put_countr } from '../../../controllers/countr'
+import { clean_form_countr } from '../../../reducers/countr'
 
 const FormCountry = () => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const handleBack = () => navigate(-1)
+  const handleBack = () => {
+    dispatch(clean_form_countr())
+    navigate(-1)
+  }
+
+  const { countr_countr } = useAppSelector((state) => state.countr)
+
+  const save_update = (body: icountr) => {
+    if (body.countr_countr === 0) {
+      dispatch(post_countr({ body, navigate }))
+    } else {
+      dispatch(put_countr({ body, navigate }))
+    }
+  }
+
+  const { errors, values, handleSubmit, handleChange, handleBlur } = useFormik({
+    validateOnChange: false,
+    enableReinitialize: true,
+    initialValues: countr_countr,
+    onSubmit: save_update,
+  })
 
   return (
     <>
       <div className="row">
         <div className="col-lg-8 offset-lg-2">
-          <h4 className="page-title">Agregar País</h4>
+          <h4 className="page-title">
+            {values.countr_countr === 0 ? 'Agregar' : 'Actualizar'} País
+          </h4>
         </div>
       </div>
 
       <div className="row">
         <div className="col-lg-8 offset-lg-2">
-          <Form>
-            <Row>
-              <Col md>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
-                  <Form.Label>
-                    Abreviatura <span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control type="text" size="sm" />
-                </Form.Group>
-              </Col>
-              <Col md>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
-                  <Form.Label>
-                    Nombre País <span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control type="text" size="sm" />
-                </Form.Group>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col md>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>Descripción</Form.Label>
-                  <Form.Control as="textarea" rows={3} />
-                </Form.Group>
-              </Col>
-            </Row>
+          <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-md-12">
+                <InputControl
+                  required
+                  name="countr_abbrev"
+                  handleBlur={handleBlur}
+                  label="Abreviatura País"
+                  handleChange={handleChange}
+                  value={values.countr_abbrev}
+                  classInvalid={Boolean(errors.countr_abbrev)}
+                />
+              </div>
+              <div className="col-md-12">
+                <InputControl
+                  required
+                  name="countr_namcou"
+                  handleBlur={handleBlur}
+                  label="Nombre País"
+                  handleChange={handleChange}
+                  value={values.countr_namcou}
+                  classInvalid={Boolean(errors.countr_namcou)}
+                />
+              </div>
+            </div>
 
             <div className="mt-2 text-center">
-              <button
-                type="submit"
-                disabled
-                className="btn btn-primary btn-rounded me-md-2 mb-2 mb-md-0">
-                Crear País
+              <button type="submit" className="btn btn-primary btn-rounded m-r-5">
+                {values.countr_countr === 0 ? 'Agregar' : 'Actualizar'} País
               </button>
               <button
                 type="button"
@@ -59,7 +81,7 @@ const FormCountry = () => {
                 Regresar
               </button>
             </div>
-          </Form>
+          </form>
         </div>
       </div>
     </>

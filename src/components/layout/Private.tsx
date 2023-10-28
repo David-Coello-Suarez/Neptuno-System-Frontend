@@ -20,9 +20,9 @@ const Private = () => {
         className={`main-wrapper ${open_modal_notification && 'open-msg-box'} ${
           open_sidebar && 'slide-nav'
         }`}>
-        <AppSidebar />
-
         <AppNavbar />
+
+        <AppSidebar />
         <div className="page-wrapper">
           <div className="content p-3">
             <Outlet />
