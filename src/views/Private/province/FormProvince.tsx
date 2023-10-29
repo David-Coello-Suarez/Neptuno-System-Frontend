@@ -1,56 +1,94 @@
-import { Col, Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import { Countr } from '../../../components/views'
+import { useFormik } from 'formik'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
+import { InputControl } from '../../../components/ui'
+import { SchemaProvin } from '../../../validation'
+import { iprovin } from '../../../interfaces'
+import { post_provin, put_provin } from '../../../controllers/provin'
+import { clean_form_provin } from '../../../reducers/provin'
 
 const FormProvince = () => {
+  const dispatch = useAppDispatch()
+
   const navigate = useNavigate()
 
-  const handleBack = () => navigate(-1)
+  const handleBack = () => {
+    dispatch(clean_form_provin())
+    navigate(-1)
+  }
+
+  const { provin_provin } = useAppSelector((state) => state.provin)
+
+  const handleProvin = (provin: iprovin) => {
+    const data = { body: provin, navigate }
+
+    if (provin.provin_provin === 0) {
+      dispatch(post_provin(data))
+    } else {
+      dispatch(put_provin(data))
+    }
+  }
+
+  const { values, errors, setFieldValue, handleChange, handleBlur, handleSubmit } =
+    useFormik({
+      enableReinitialize: true,
+      validationSchema: SchemaProvin,
+      initialValues: provin_provin,
+      onSubmit: handleProvin,
+    })
 
   return (
     <>
-      <Row>
-        <Col lg={8} className="offset-lg-2">
-          <h4 className="page-title">Agregar Provincia</h4>
-        </Col>
-      </Row>
+      <div className="row">
+        <div className="col-lg-8 offset-lg-2">
+          <h4 className="page-title">
+            {values.provin_provin === 0 ? 'Agregar' : 'Actualizar'} Provincia
+          </h4>
+        </div>
+      </div>
 
-      <Row>
-        <Col lg={8} className="offset-lg-2">
-          <Form>
-            <Row>
-              <Col md>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
-                  <Form.Label>
-                    Abreviatura <span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control type="text" size="sm" />
-                </Form.Group>
-              </Col>
-              <Col md>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
-                  <Form.Label>
-                    Nombre Provincia <span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control type="text" size="sm" />
-                </Form.Group>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col md>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>Descripción</Form.Label>
-                  <Form.Control as="textarea" rows={3} />
-                </Form.Group>
-              </Col>
-            </Row>
+      <div className="row">
+        <div className="col-lg-8 offset-lg-2">
+          <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-md-12">
+                <Countr
+                  nameSelect="countr_countr"
+                  handleChange={(countr_countr) =>
+                    setFieldValue('countr_countr', countr_countr)
+                  }
+                  classInvalid={errors.countr_countr}
+                  value={values.countr_countr}
+                />
+              </div>
+              <div className="col-md-12">
+                <InputControl
+                  required
+                  label="Abreviatura"
+                  name="provin_abbrev"
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  value={values.provin_abbrev}
+                  classInvalid={errors.provin_abbrev}
+                />
+              </div>
+              <div className="col-md-12">
+                <InputControl
+                  required
+                  label="Nombre"
+                  name="provin_nampro"
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  value={values.provin_nampro}
+                  classInvalid={errors.provin_nampro}
+                />
+              </div>
+            </div>
 
             <div className="mt-2 text-center">
-              <button
-                type="submit"
-                disabled
-                className="btn btn-primary btn-rounded me-md-2 mb-2 mb-md-0">
-                Crear Provincia
+              <button type="submit" className="btn btn-primary btn-rounded m-r-5">
+                {values.provin_provin === 0 ? 'Crear' : 'Actualizar'} Provincia
               </button>
               <button
                 type="button"
@@ -59,9 +97,9 @@ const FormProvince = () => {
                 Regresar
               </button>
             </div>
-          </Form>
-        </Col>
-      </Row>
+          </form>
+        </div>
+      </div>
     </>
   )
 }

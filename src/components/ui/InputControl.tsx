@@ -4,7 +4,7 @@ interface iinputcontrol {
   value: string
   required?: boolean
   password?: boolean
-  classInvalid: boolean
+  classInvalid?: string | undefined
   handleBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
@@ -34,8 +34,9 @@ const InputControl = (input: iinputcontrol) => {
           onBlur={handleBlur}
           onChange={handleChange}
           type={password ? 'password' : 'text'}
-          className={`form-control ${classInvalid && 'is-invalid'}`}
+          className={`form-control ${Boolean(classInvalid) && 'is-invalid'}`}
         />
+        {Boolean(classInvalid) && <small className="text-danger">{classInvalid}</small>}
       </div>
     </>
   )

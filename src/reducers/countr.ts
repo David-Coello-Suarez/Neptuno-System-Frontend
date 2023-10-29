@@ -3,6 +3,7 @@ import { Id, toast } from 'react-toastify'
 import {
   delete_countr,
   get_countrs,
+  get_countrs_active,
   post_countr,
   put_countr,
 } from '../controllers/countr'
@@ -11,13 +12,13 @@ import { icountr } from '../interfaces'
 const initialState = {
   loading_loading: false,
   countrs_countrs: Array<icountr>(),
+  countrs_paginat: { pagina: 0, limite: 0, totalItems: 0, totalPages: 0 },
   countr_countr: {
     countr_countr: 0,
     countr_namcou: '',
     countr_abbrev: '',
     countr_status: 'A',
   },
-  countr_toastId: 0,
 }
 
 let countr_toastId: Id
@@ -42,6 +43,24 @@ const CountrSlice = createSlice({
         state.loading_loading = true
       })
       .addCase(get_countrs.fulfilled, (state, { payload }) => {
+        state.loading_loading = false
+
+        const { estado, data } = payload
+
+        if (estado === 1) {
+          state.countrs_countrs = data.countrs
+          state.countrs_paginat = data.paginacion
+        } else {
+          state.countrs_countrs = initialState.countrs_countrs
+          state.countrs_paginat = initialState.countrs_paginat
+        }
+      })
+
+    builder
+      .addCase(get_countrs_active.pending, (state) => {
+        state.loading_loading = true
+      })
+      .addCase(get_countrs_active.fulfilled, (state, { payload }) => {
         state.loading_loading = false
 
         const { estado, data } = payload

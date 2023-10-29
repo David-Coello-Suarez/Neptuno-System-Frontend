@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { icountr, ipagina, irespue } from '../interfaces'
 import { instanciaAxios } from '../api'
 import { NavigateFunction } from 'react-router-dom'
+import { clean_form_countr } from '../reducers/countr'
 
 const file = 'countr',
   rute = 'countr'
@@ -16,11 +17,25 @@ interface icosaup {
   navigate?: NavigateFunction
 }
 
-export const get_countrs = createAsyncThunk(`${file}/get_countrs`, async () => {
-  const { data } = await instanciaAxios.get<irespue<irescou>>(`/${rute}`)
+export const get_countrs = createAsyncThunk(
+  `${file}/get_countrs`,
+  async (pagination: ipagina | undefined) => {
+    const { data } = await instanciaAxios.get<irespue<irescou>>(`/${rute}`, {
+      params: pagination,
+    })
 
-  return data
-})
+    return data
+  },
+)
+
+export const get_countrs_active = createAsyncThunk(
+  `${file}/get_countrs_active`,
+  async () => {
+    const { data } = await instanciaAxios.get<irespue<irescou>>(`/${rute}/active`)
+
+    return data
+  },
+)
 
 export const post_countr = createAsyncThunk(
   `${file}/post_countr`,
@@ -29,6 +44,7 @@ export const post_countr = createAsyncThunk(
 
     if (data.estado === 1 && navigate) {
       thunk.dispatch(get_countrs())
+      thunk.dispatch(clean_form_countr())
       navigate(-1)
     }
 
@@ -48,6 +64,7 @@ export const put_countr = createAsyncThunk(
       navigate(-1)
     }
     thunk.dispatch(get_countrs())
+    thunk.dispatch(clean_form_countr())
 
     return data
   },

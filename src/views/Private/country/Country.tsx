@@ -1,11 +1,11 @@
-import { Switch, Table } from 'antd'
+import { Pagination, Switch, Table } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { ColumnsType } from 'antd/es/table'
 import { NotData } from '../../../components/views'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { icountr } from '../../../interfaces'
 import { set_countr } from '../../../reducers/countr'
-import { delete_countr, put_countr } from '../../../controllers/countr'
+import { delete_countr, get_countrs, put_countr } from '../../../controllers/countr'
 
 const Country = () => {
   const dispatch = useAppDispatch()
@@ -13,7 +13,9 @@ const Country = () => {
 
   const handleClickAdd = () => navigate('add')
 
-  const { countrs_countrs, loading_loading } = useAppSelector((state) => state.countr)
+  const { countrs_countrs, loading_loading, countrs_paginat } = useAppSelector(
+    (state) => state.countr,
+  )
 
   const handleEdita = (countr: icountr) => {
     dispatch(set_countr(countr))
@@ -74,7 +76,7 @@ const Country = () => {
       ),
     },
   ]
-
+  console.log(countrs_paginat)
   return (
     <>
       <div className="row">
@@ -83,13 +85,33 @@ const Country = () => {
             bordered
             size="small"
             columns={columns}
+            className="m-b-20"
             loading={loading_loading}
             dataSource={countrs_countrs}
             rowKey={(countr) => countr.countr_countr}
+            pagination={false}
             locale={{
               emptyText: <NotData onclick={handleClickAdd} btnMssg="Añadir Nuevo País" />,
             }}
           />
+
+          {countrs_countrs.length > 0 && (
+            <Pagination
+              onChange={(pagina, limite) =>
+                dispatch(get_countrs({ ...countrs_paginat, pagina, limite }))
+              }
+              className="text-center"
+              total={countrs_paginat.totalItems}
+              showSizeChanger
+              showTotal={(total, range) =>
+                `Mostrando del ${range[0]} a ${range[1]} de ${total} items`
+              }
+              defaultPageSize={countrs_paginat.limite}
+              defaultCurrent={countrs_paginat.pagina}
+              pageSizeOptions={[10, 50, 100]}
+              size="small"
+            />
+          )}
         </div>
       </div>
     </>

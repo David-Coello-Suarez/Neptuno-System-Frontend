@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import { icountr } from '../../../interfaces'
 import { post_countr, put_countr } from '../../../controllers/countr'
 import { clean_form_countr } from '../../../reducers/countr'
+import { SchemaCountry } from '../../../validation'
 
 const FormCountry = () => {
   const dispatch = useAppDispatch()
@@ -29,6 +30,7 @@ const FormCountry = () => {
     validateOnChange: false,
     enableReinitialize: true,
     initialValues: countr_countr,
+    validationSchema: SchemaCountry,
     onSubmit: save_update,
   })
 
@@ -54,7 +56,7 @@ const FormCountry = () => {
                   label="Abreviatura País"
                   handleChange={handleChange}
                   value={values.countr_abbrev}
-                  classInvalid={Boolean(errors.countr_abbrev)}
+                  classInvalid={errors.countr_abbrev}
                 />
               </div>
               <div className="col-md-12">
@@ -65,7 +67,7 @@ const FormCountry = () => {
                   label="Nombre País"
                   handleChange={handleChange}
                   value={values.countr_namcou}
-                  classInvalid={Boolean(errors.countr_namcou)}
+                  classInvalid={errors.countr_namcou}
                 />
               </div>
             </div>
