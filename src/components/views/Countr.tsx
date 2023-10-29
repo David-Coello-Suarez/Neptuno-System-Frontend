@@ -9,6 +9,7 @@ interface icountr {
   handleChange: (countr: number) => void
   classInvalid?: string | undefined
   value: number
+  displayLabel: boolean
 }
 
 const Countr = (element: icountr) => {
@@ -29,15 +30,20 @@ const Countr = (element: icountr) => {
     label: countr.countr_namcou,
   }))
 
+  categoria_paises.unshift({ value: '0', label: 'Selecciona' })
+
   const handleSelectChange = (selected: { value: string; label: string } | null) =>
     element.handleChange(Number(selected?.value))
 
   return (
     <>
       <div className="form-group">
-        <label htmlFor={element.nameSelect}>
-          País <span className="text-danger">*</span>
-        </label>
+        {element.displayLabel && (
+          <label htmlFor={element.nameSelect}>
+            País <span className="text-danger">*</span>
+          </label>
+        )}
+
         <SelectBox
           value={categoria_paises.filter((cp) => Number(cp.value) === element.value)}
           id={element.nameSelect}

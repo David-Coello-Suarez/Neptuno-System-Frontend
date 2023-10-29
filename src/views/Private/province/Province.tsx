@@ -8,6 +8,7 @@ import { delete_provin, get_provins, put_provin } from '../../../controllers/pro
 import { iprovin } from '../../../interfaces/iprovin'
 import { ColumnsType } from 'antd/es/table'
 import { clean_provins, set_provin } from '../../../reducers/provin'
+import FormFiltres from './FormFiltres'
 
 const Province = () => {
   const dispatch = useAppDispatch()
@@ -91,6 +92,8 @@ const Province = () => {
   return (
     <>
       <AddButton handleClickAdd={handleClickAdd} msgButton="Añadir Nueva Provincia" />
+
+      <FormFiltres />
 
       <div className="row">
         <div className="col-md-12">

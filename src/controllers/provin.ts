@@ -17,9 +17,13 @@ interface iprsaup {
   navigate?: NavigateFunction
 }
 
+interface iquerypagina extends ipagina {
+  countr: number
+}
+
 export const get_provins = createAsyncThunk(
   `${file}/get_provins`,
-  async (pagination: ipagina | undefined) => {
+  async (pagination: iquerypagina | undefined) => {
     const { data } = await instanciaAxios.get<irespue<irespro>>(`/${rute}`, {
       params: pagination,
     })

@@ -11,9 +11,10 @@ import {
 const initialState = {
   loading_loading: false,
   provins_provins: Array<iprovin>(),
-  provins_paginat: { pagina: 0, limite: 0, totalItems: 0, totalPages: 0 },
+  provins_paginat: { pagina: 0, limite: 0, totalItems: 0, totalPages: 0, countr: 0 },
   provin_provin: {
     countr_countr: 0,
+    countr_namcou: '',
     provin_provin: 0,
     provin_nampro: '',
     provin_abbrev: '',
@@ -49,7 +50,7 @@ const ProvinSlice = createSlice({
 
         if (estado === 1) {
           state.provins_provins = data.provins
-          state.provins_paginat = data.paginacion
+          state.provins_paginat = { ...state.provins_paginat, ...data.paginacion }
         } else {
           state.provins_provins = initialState.provins_provins
           state.provins_paginat = initialState.provins_paginat

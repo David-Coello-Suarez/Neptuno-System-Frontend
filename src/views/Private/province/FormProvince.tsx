@@ -54,6 +54,7 @@ const FormProvince = () => {
             <div className="row">
               <div className="col-md-12">
                 <Countr
+                  displayLabel
                   nameSelect="countr_countr"
                   handleChange={(countr_countr) =>
                     setFieldValue('countr_countr', countr_countr)
