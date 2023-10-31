@@ -1,9 +1,10 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice, isRejected } from '@reduxjs/toolkit'
 import { Id, toast } from 'react-toastify'
 import { iprovin } from '../interfaces'
 import {
   delete_provin,
   get_provins,
+  get_provins_active,
   post_provin,
   put_provin,
 } from '../controllers/provin'
@@ -57,21 +58,19 @@ const ProvinSlice = createSlice({
         }
       })
 
-    // builder
-    //   .addCase(get_countrs_active.pending, (state) => {
-    //     state.loading_loading = true
-    //   })
-    //   .addCase(get_countrs_active.fulfilled, (state, { payload }) => {
-    //     state.loading_loading = false
+      .addCase(get_provins_active.pending, (state) => {
+        state.loading_loading = true
+      })
+      .addCase(get_provins_active.fulfilled, (state, { payload }) => {
+        state.loading_loading = false
 
-    //     const { estado, data } = payload
+        const { estado, data } = payload
 
-    //     if (estado === 1) {
-    //       state.countrs_countrs = data.countrs
-    //     }
-    //   })
+        if (estado === 1) {
+          state.provins_provins = data.provins
+        }
+      })
 
-    builder
       .addCase(post_provin.pending, () => {
         countr_toastId = toast.loading('Creando provincia....')
       })
@@ -95,7 +94,6 @@ const ProvinSlice = createSlice({
         }
       })
 
-    builder
       .addCase(put_provin.pending, () => {
         countr_toastId = toast.loading('Actualizando provincia....')
       })
@@ -119,7 +117,6 @@ const ProvinSlice = createSlice({
         }
       })
 
-    builder
       .addCase(delete_provin.pending, () => {
         countr_toastId = toast.loading('Eliminando provincia....')
       })
@@ -141,6 +138,15 @@ const ProvinSlice = createSlice({
             autoClose: 3000,
           })
         }
+      })
+
+      .addMatcher(isRejected, () => {
+        toast.update(countr_toastId, {
+          render: 'Se a producido un error. Ponte en contacto con el administrador',
+          type: 'error',
+          isLoading: false,
+          autoClose: 3000,
+        })
       })
   },
 })

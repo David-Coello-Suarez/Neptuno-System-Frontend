@@ -76,7 +76,7 @@ const Country = () => {
       ),
     },
   ]
-  console.log(countrs_paginat)
+  
   return (
     <>
       <div className="row">

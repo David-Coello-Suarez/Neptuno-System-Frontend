@@ -1,56 +1,109 @@
-import { Col, Form, Row } from 'react-bootstrap'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
+import { clean_form_citylo } from '../../../reducers/citylo'
+import { useFormik } from 'formik'
+import { InputControl } from '../../../components/ui'
+import { Countr, Provin } from '../../../components/views'
+import { SchemaCity } from '../../../validation'
+import { icitylo } from '../../../interfaces'
+import { post_citylo, put_citylo } from '../../../controllers/city'
 
 const FormCity = () => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const handleBack = () => navigate(-1)
+  const handleBack = () => {
+    dispatch(clean_form_citylo())
+    navigate(-1)
+  }
+
+  const { citylo_citylo } = useAppSelector((state) => state.citylo)
+
+  const handleSubmitCity = (body: icitylo) => {
+    if (body.citylo_citylo === 0) {
+      dispatch(post_citylo({ body, navigate }))
+    } else {
+      dispatch(put_citylo({ body, navigate }))
+    }
+  }
+
+  const { values, errors, setFieldValue, handleChange, handleBlur, handleSubmit } =
+    useFormik({
+      enableReinitialize: true,
+      initialValues: citylo_citylo,
+      validateOnChange: false,
+      validationSchema: SchemaCity,
+      onSubmit: handleSubmitCity,
+    })
+
+  const [country, setCountry] = useState(values.countr_countr)
 
   return (
     <>
-      <Row>
-        <Col lg={8} className="offset-lg-2">
-          <h4 className="page-title">Agregar Ciudad</h4>
-        </Col>
-      </Row>
+      <div className="row">
+        <div className="col-lg-8 offset-lg-2">
+          <h4 className="page-title">
+            {values.citylo_citylo === 0 ? 'Agregar' : 'Actualizar'} Ciudad
+          </h4>
+        </div>
+      </div>
 
-      <Row>
-        <Col lg={8} className="offset-lg-2">
-          <Form>
-            <Row>
-              <Col md>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
-                  <Form.Label>
-                    Abreviatura <span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control type="text" size="sm" />
-                </Form.Group>
-              </Col>
-              <Col md>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
-                  <Form.Label>
-                    Nombre Ciudad <span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control type="text" size="sm" />
-                </Form.Group>
-              </Col>
-            </Row>
+      <div className="row">
+        <div className="col-lg-8 offset-lg-2">
+          <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-md-6">
+                <Countr
+                  displayLabel
+                  value={country}
+                  nameSelect="countr_countr"
+                  handleChange={setCountry}
+                />
+              </div>
+              <div className="col-md-6">
+                <Provin
+                  displayLabel
+                  countryid={country}
+                  nameSelect="provin_provin"
+                  value={values.provin_provin}
+                  classInvalid={errors.provin_provin}
+                  handleChange={(valor) => setFieldValue('provin_provin', valor)}
+                />
+              </div>
+            </div>
 
-            <Row>
-              <Col md>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>Descripción</Form.Label>
-                  <Form.Control as="textarea" rows={3} />
-                </Form.Group>
-              </Col>
-            </Row>
+            <div className="row">
+              <div className="col-md-12">
+                <InputControl
+                  required
+                  label="Abreviatura"
+                  name="citylo_abbrev"
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  value={values.citylo_abbrev}
+                  classInvalid={errors.citylo_abbrev}
+                />
+              </div>
+
+              <div className="col-md-12">
+                <InputControl
+                  required
+                  label="Nombre"
+                  name="citylo_namcit"
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  value={values.citylo_namcit}
+                  classInvalid={errors.citylo_namcit}
+                />
+              </div>
+            </div>
 
             <div className="mt-2 text-center">
               <button
                 type="submit"
-                disabled
                 className="btn btn-primary btn-rounded me-md-2 mb-2 mb-md-0">
-                Crear Ciudad
+                {values.citylo_citylo === 0 ? 'Agregar' : 'Actualizar'} Ciudad
               </button>
               <button
                 type="button"
@@ -59,9 +112,9 @@ const FormCity = () => {
                 Regresar
               </button>
             </div>
-          </Form>
-        </Col>
-      </Row>
+          </form>
+        </div>
+      </div>
     </>
   )
 }

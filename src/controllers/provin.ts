@@ -32,6 +32,17 @@ export const get_provins = createAsyncThunk(
   },
 )
 
+export const get_provins_active = createAsyncThunk(
+  `${file}/get_provins_active`,
+  async (provin: number) => {
+    const response = await instanciaAxios.get(`/${rute}/active`, {
+      params: { provin },
+    })
+
+    return response.data
+  },
+)
+
 export const post_provin = createAsyncThunk(
   `${file}/post_provin`,
   async ({ body, navigate }: iprsaup, thunk) => {

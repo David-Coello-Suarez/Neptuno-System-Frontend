@@ -1,4 +1,5 @@
-export interface icountr {
+export interface icitylo {
+  countr_countr: number
   provin_provin: number
   provin_nampro: string
   citylo_citylo: number

@@ -1,4 +1,5 @@
 import { AppReducer } from './app'
+import { CityloReducer } from './citylo'
 import { CountrReducer } from './countr'
 import { LoggInReducer } from './loggIn'
 import { ProvinReducer } from './provin'
@@ -10,4 +11,5 @@ export const reducer = {
   sideba: SidebaReducer,
   countr: CountrReducer,
   provin: ProvinReducer,
+  citylo: CityloReducer,
 }
