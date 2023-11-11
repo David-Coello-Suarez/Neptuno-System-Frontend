@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom'
-import { InputControl } from '../../../components/ui'
-import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { useFormik } from 'formik'
-import { icountr } from '../../../interfaces'
-import { post_countr, put_countr } from '../../../controllers/countr'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { clean_form_countr } from '../../../reducers/countr'
 import { SchemaCountry } from '../../../validation'
+import { post_countr, put_countr } from '../../../controllers/countr'
+import { InputControl } from '../../../components/common'
+import { icountr } from '../../../interfaces'
 
 const FormCountry = () => {
   const dispatch = useAppDispatch()

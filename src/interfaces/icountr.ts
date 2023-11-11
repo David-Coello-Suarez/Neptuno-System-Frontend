@@ -1,8 +1,6 @@
 export interface icountr {
-  provin_provin: number
-  provin_nampro: string
-  citylo_citylo: number
-  citylo_namcit: string
-  citylo_abbrev: string
-  citylo_status: string
+  countr_countr: number
+  countr_namcou: string
+  countr_abbrev: string
+  countr_status: string
 }

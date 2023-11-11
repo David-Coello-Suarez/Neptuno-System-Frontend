@@ -1,11 +1,10 @@
-import { Pagination, Switch, Table } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { ColumnsType } from 'antd/es/table'
-import { NotData } from '../../../components/views'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
-import { icountr } from '../../../interfaces'
 import { set_countr } from '../../../reducers/countr'
 import { delete_countr, get_countrs, put_countr } from '../../../controllers/countr'
+import { ColumnsType, Pagination, Switch, Table } from '../../../components'
+import { NotData } from '../../../components/ui'
+import { icountr } from '../../../interfaces'
 
 const Country = () => {
   const dispatch = useAppDispatch()
@@ -76,7 +75,7 @@ const Country = () => {
       ),
     },
   ]
-  
+
   return (
     <>
       <div className="row">
@@ -108,7 +107,7 @@ const Country = () => {
               }
               defaultPageSize={countrs_paginat.limite}
               defaultCurrent={countrs_paginat.pagina}
-              pageSizeOptions={[10, 50, 100]}
+              pageSizeOptions={[25, 50, 100]}
               size="small"
             />
           )}

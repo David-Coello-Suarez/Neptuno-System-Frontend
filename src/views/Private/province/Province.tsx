@@ -1,14 +1,13 @@
 import { useEffect } from 'react'
-import { Pagination, Switch, Table } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { NotData } from '../../../components/views'
-import { AddButton } from '../../../components/ui'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { delete_provin, get_provins, put_provin } from '../../../controllers/provin'
-import { iprovin } from '../../../interfaces/iprovin'
-import { ColumnsType } from 'antd/es/table'
 import { clean_provins, set_provin } from '../../../reducers/provin'
-import FormFiltres from './FormFiltres'
+import { Pagination, Switch, Table } from 'antd'
+import { ColumnsType } from 'antd/es/table'
+import { AddButton } from '../../../components/common'
+import { NotData } from '../../../components/ui'
+import { iprovin } from '../../../interfaces'
 
 const Province = () => {
   const dispatch = useAppDispatch()
@@ -93,7 +92,7 @@ const Province = () => {
     <>
       <AddButton handleClickAdd={handleClickAdd} msgButton="Añadir Nueva Provincia" />
 
-      <FormFiltres />
+      {/* <FormFiltres /> */}
 
       <div className="row">
         <div className="col-md-12">

@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useFormik } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { clean_form_citylo } from '../../../reducers/citylo'
-import { useFormik } from 'formik'
-import { InputControl } from '../../../components/ui'
-import { Countr, Provin } from '../../../components/views'
+import { InputControl } from '../../../components/common'
+import { CountryBox, ProvinBox } from '../../../components/uiBox'
+import { post_citylo, put_citylo } from '../../../controllers/city'
 import { SchemaCity } from '../../../validation'
 import { icitylo } from '../../../interfaces'
-import { post_citylo, put_citylo } from '../../../controllers/city'
 
 const FormCity = () => {
   const dispatch = useAppDispatch()
@@ -54,7 +54,7 @@ const FormCity = () => {
           <form onSubmit={handleSubmit}>
             <div className="row">
               <div className="col-md-6">
-                <Countr
+                <CountryBox
                   displayLabel
                   value={country}
                   nameSelect="countr_countr"
@@ -62,7 +62,7 @@ const FormCity = () => {
                 />
               </div>
               <div className="col-md-6">
-                <Provin
+                <ProvinBox
                   displayLabel
                   countryid={country}
                   nameSelect="provin_provin"

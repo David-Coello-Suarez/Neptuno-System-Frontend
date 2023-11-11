@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
-import { Countr } from '../../../components/views'
 import { useFormik } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
-import { InputControl } from '../../../components/ui'
+import { clean_form_provin } from '../../../reducers/provin'
+import { post_provin, put_provin } from '../../../controllers/provin'
 import { SchemaProvin } from '../../../validation'
 import { iprovin } from '../../../interfaces'
-import { post_provin, put_provin } from '../../../controllers/provin'
-import { clean_form_provin } from '../../../reducers/provin'
+import { CountryBox } from '../../../components/uiBox'
+import { InputControl } from '../../../components/common'
 
 const FormProvince = () => {
   const dispatch = useAppDispatch()
@@ -53,7 +53,7 @@ const FormProvince = () => {
           <form onSubmit={handleSubmit}>
             <div className="row">
               <div className="col-md-12">
-                <Countr
+                <CountryBox
                   displayLabel
                   nameSelect="countr_countr"
                   handleChange={(countr_countr) =>

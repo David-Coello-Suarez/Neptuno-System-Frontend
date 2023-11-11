@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../../hooks'
 import { get_countrs } from '../../../controllers/countr'
 import { clean_countrs } from '../../../reducers/countr'
-import { AddButton } from '../../../components/ui'
+import { AddButton } from '../../../components/common'
 import Country from './Country'
 
 const Layout = () => {
@@ -22,9 +22,11 @@ const Layout = () => {
 
   return (
     <>
-      <AddButton handleClickAdd={handleClickAdd} msgButton="Añadir Nuevo País" />
+      <div className="card-box">
+        <AddButton handleClickAdd={handleClickAdd} msgButton="Añadir Nuevo País" />
 
-      <Country />
+        <Country />
+      </div>
     </>
   )
 }

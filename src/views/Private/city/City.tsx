@@ -1,11 +1,11 @@
-import { Pagination, Switch, Table } from 'antd'
-import { NotData } from '../../../components/views'
-import { useAppDispatch, useAppSelector } from '../../../hooks'
-import { icitylo } from '../../../interfaces/icitylo'
-import { ColumnsType } from 'antd/es/table'
-import { delete_citylo, get_citylos, put_citylo } from '../../../controllers/city'
 import { useNavigate } from 'react-router-dom'
+import { Pagination, Switch } from 'antd'
+import Table, { ColumnsType } from 'antd/es/table'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { set_citylo } from '../../../reducers/citylo'
+import { delete_citylo, get_citylos, put_citylo } from '../../../controllers/city'
+import { NotData } from '../../../components/ui'
+import { icitylo } from '../../../interfaces'
 
 interface icity {
   handleClickAdd: () => void
@@ -20,7 +20,6 @@ const City = ({ handleClickAdd }: icity) => {
   )
 
   const handleEdita = (citylo: icitylo) => {
-  
     dispatch(set_citylo(citylo))
     navigate(`edit/${citylo.citylo_citylo}`)
   }
@@ -31,8 +30,8 @@ const City = ({ handleClickAdd }: icity) => {
 
   const columns: ColumnsType<icitylo> = [
     { title: 'Provincia', dataIndex: 'provin_nampro' },
-    { title: 'Abreviatura', dataIndex: 'citylo_abbrev' },
     { title: 'Ciudad', dataIndex: 'citylo_namcit' },
+    { title: 'Abreviatura', dataIndex: 'citylo_abbrev' },
     {
       title: 'Estado',
       dataIndex: 'citylo_status',
