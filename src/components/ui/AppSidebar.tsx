@@ -6,6 +6,8 @@ import { get_sideba } from '../../controllers/sideba'
 import { clean_sideba } from '../../reducers/sidebar'
 import { isideba } from '../../interfaces'
 
+import 'simplebar-react/dist/simplebar.min.css'
+
 const AppSidebar = () => {
   const dispatch = useAppDispatch()
 
@@ -42,19 +44,18 @@ const AppSidebar = () => {
   }
 
   return (
-    <div className="sidebar" id="sidebar">
+    <div
+      className="sidebar"
+      id="sidebar"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}>
       <SimpleBar
         className="sidebar-menu"
         style={{
-          position: 'relative',
-          overflow: 'hidden',
+          maxHeight: '100%',
           width: '100%',
-          height: '281px',
         }}>
-        <div
-          className="sidebar-inner slimscroll"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}>
+        <div className="sidebar-inner slimscroll">
           <div id="sidebar-menu" className="sidebar-menu">
             <ul>
               <li className="menu-title">Principal</li>

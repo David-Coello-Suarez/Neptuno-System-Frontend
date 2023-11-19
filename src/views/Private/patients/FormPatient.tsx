@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
-import { City, Country, Province } from '../../../components/views'
+import { CountryBox } from '../../../components/uiBox'
+import { InputControl } from '../../../components/common'
 
 const FormPatient = () => {
   const navigate = useNavigate()
@@ -53,10 +54,14 @@ const FormPatient = () => {
             <div className="row">
               <div className="col-sm-6">
                 <div className="form-group">
-                  <label>
-                    Apellidos <span className="text-danger">*</span>
-                  </label>
-                  <input disabled className="form-control" type="text" />
+                  <InputControl
+                    disabled
+                    value={''}
+                    label={'Apellidos'}
+                    name={'apelli_apelli'}
+                    handleChange={console.log}
+                    placeholder="Ingrese apellidos"
+                  />
                 </div>
               </div>
 
@@ -139,14 +144,15 @@ const FormPatient = () => {
               <div className="col-sm-12">
                 <div className="row">
                   <div className="col-md-4">
-                    <Country />
+                    <CountryBox
+                      nameSelect={'countr_countr'}
+                      handleChange={console.log}
+                      value={0}
+                      displayLabel={'País'}
+                    />
                   </div>
-                  <div className="col-md-4">
-                    <Province />
-                  </div>
-                  <div className="col-md-4">
-                    <City />
-                  </div>
+                  <div className="col-md-4">{/* <Province /> */}</div>
+                  <div className="col-md-4">{/* <City /> */}</div>
                 </div>
               </div>
             </div>

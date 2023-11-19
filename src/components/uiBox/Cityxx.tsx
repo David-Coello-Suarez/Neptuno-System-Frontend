@@ -1,41 +1,41 @@
 import { useEffect } from 'react'
-import { get_provins_active } from '../../controllers/provin'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { clean_provins } from '../../reducers/provin'
 import SelectBox from './SelectBox'
+import { clean_citylos } from '../../reducers/citylo'
+import { get_citylos_active } from '../../controllers/city'
 
 interface iprovin {
   nameSelect: string
-  handleChange: (provin: number) => void
+  handleChange: (cityxx: number) => void
   classInvalid?: string | undefined
-  countryid: number
+  provinid: number
   displayLabel?: string
   value: number
 }
 
-const Provin = (element: iprovin) => {
+const Cityxx = (element: iprovin) => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (element.countryid > 0) {
-      dispatch(get_provins_active(element.countryid))
+    if (element.provinid > 0) {
+      dispatch(get_citylos_active(element.provinid))
     }
 
     return () => {
-      dispatch(clean_provins())
+      dispatch(clean_citylos())
     }
-  }, [dispatch, element.countryid])
+  }, [dispatch, element.provinid])
 
-  const { loading_loading, provins_provins } = useAppSelector((state) => state.provin)
+  const { loading_loading, citylos_citylos } = useAppSelector((state) => state.citylo)
 
-  const categoria_provincias = provins_provins.map((provin) => ({
-    value: provin.provin_provin.toString(),
-    label: provin.provin_nampro,
+  const categoria_ciudades = citylos_citylos.map((cityxx) => ({
+    value: cityxx.citylo_citylo.toString(),
+    label: cityxx.citylo_namcit.toUpperCase(),
   }))
 
-  const disabled = categoria_provincias.length === 0
+  const disabled = categoria_ciudades.length === 0
 
-  categoria_provincias.unshift({ value: '0', label: 'SELECCIONA' })
+  categoria_ciudades.unshift({ value: '0', label: 'SELECCIONA' })
 
   const handleSelectChange = (selected: { value: string; label: string } | null) =>
     element.handleChange(Number(selected?.value))
@@ -45,15 +45,15 @@ const Provin = (element: iprovin) => {
       <div className="form-group">
         {element.displayLabel && (
           <label htmlFor={element.nameSelect}>
-            Provincia <span className="text-danger">*</span>
+            Ciudad <span className="text-danger">*</span>
           </label>
         )}
 
         <SelectBox
-          value={categoria_provincias.filter((cp) => Number(cp.value) === element.value)}
+          value={categoria_ciudades.filter((cp) => Number(cp.value) === element.value)}
           id={element.nameSelect}
           name={element.nameSelect}
-          options={categoria_provincias}
+          options={categoria_ciudades}
           onChange={handleSelectChange}
           isLoading={loading_loading}
           isDisabled={disabled}
@@ -66,4 +66,4 @@ const Provin = (element: iprovin) => {
   )
 }
 
-export default Provin
+export default Cityxx

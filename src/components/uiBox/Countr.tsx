@@ -9,7 +9,7 @@ interface icountr {
   handleChange: (countr: number) => void
   classInvalid?: string | undefined
   value: number
-  displayLabel: boolean
+  displayLabel?: string
 }
 
 const Countr = (element: icountr) => {
@@ -30,7 +30,7 @@ const Countr = (element: icountr) => {
     label: countr.countr_namcou,
   }))
 
-  categoria_paises.unshift({ value: '0', label: 'Selecciona' })
+  categoria_paises.unshift({ value: '0', label: 'SELECCIONA' })
 
   const handleSelectChange = (selected: { value: string; label: string } | null) =>
     element.handleChange(Number(selected?.value))

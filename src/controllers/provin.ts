@@ -34,9 +34,9 @@ export const get_provins = createAsyncThunk(
 
 export const get_provins_active = createAsyncThunk(
   `${file}/get_provins_active`,
-  async (provin: number) => {
+  async (countr_countr: number) => {
     const response = await instanciaAxios.get(`/${rute}/active`, {
-      params: { provin },
+      params: { countr_countr },
     })
 
     return response.data

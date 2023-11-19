@@ -1,5 +1,6 @@
 import { AppReducer } from './app'
 import { CityloReducer } from './citylo'
+import { CompanReducer } from './compan'
 import { CountrReducer } from './countr'
 import { LoggInReducer } from './loggIn'
 import { ProvinReducer } from './provin'
@@ -12,4 +13,5 @@ export const reducer = {
   countr: CountrReducer,
   provin: ProvinReducer,
   citylo: CityloReducer,
+  compan: CompanReducer,
 }

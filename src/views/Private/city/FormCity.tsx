@@ -55,7 +55,7 @@ const FormCity = () => {
             <div className="row">
               <div className="col-md-6">
                 <CountryBox
-                  displayLabel
+                  displayLabel={'Pais'}
                   value={country}
                   nameSelect="countr_countr"
                   handleChange={setCountry}

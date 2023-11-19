@@ -3,22 +3,28 @@ interface iinputcontrol {
   label: string
   value: string
   required?: boolean
-  password?: boolean
+  readonly?: boolean
+  disabled?: boolean
+  placeholder?: string
   classInvalid?: string | undefined
+  type?: 'password' | 'string' | 'date' | 'datetime-local'
   handleBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const InputControl = (input: iinputcontrol) => {
   const {
-    password,
-    required,
-    label,
-    classInvalid,
     name,
+    label,
     value,
-    handleChange,
+    required,
+    readonly,
+    disabled,
     handleBlur,
+    placeholder,
+    type = 'text',
+    handleChange,
+    classInvalid,
   } = input
 
   return (
@@ -30,10 +36,13 @@ const InputControl = (input: iinputcontrol) => {
         <input
           id={name}
           name={name}
+          type={type}
           value={value}
+          readOnly={readonly}
           onBlur={handleBlur}
+          disabled={disabled}
           onChange={handleChange}
-          type={password ? 'password' : 'text'}
+          placeholder={placeholder}
           className={`form-control ${Boolean(classInvalid) && 'is-invalid'}`}
         />
         {Boolean(classInvalid) && <small className="text-danger">{classInvalid}</small>}

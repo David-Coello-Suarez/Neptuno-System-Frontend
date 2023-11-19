@@ -36,7 +36,7 @@ export const get_citylos_active = createAsyncThunk(
   `${file}/get_citylos_active`,
   async (provin_provin: number) => {
     const { data } = await instanciaAxios.get<irespue<irescit>>(`/${rute}/active`, {
-      params: provin_provin,
+      params: { provin_provin },
     })
 
     return data
